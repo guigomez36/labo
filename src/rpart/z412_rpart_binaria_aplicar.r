@@ -6,12 +6,14 @@ require("data.table")
 require("rpart")
 require("rpart.plot")
 
+# edicion de folders para ver como trabaja git
+
 
 #Aqui se debe poner la carpeta de la materia de SU computadora local
-setwd("D:\\gdrive\\UBA2022\\")  #Establezco el Working Directory
+setwd("C:\\DataMining_Economia_Finanzas\\")  #Establezco el Working Directory
 
 #cargo el dataset
-dataset  <- fread("./datasets/competencia1_2022.csv" )
+dataset  <- fread("C:\\DataMining_Economia_Finanzas\\datasets\\competencia1_2022.csv" )
 
 
 #creo la clase_binaria SI={ BAJA+1, BAJA+2 }    NO={ CONTINUA }
@@ -81,8 +83,8 @@ dfinal[ , azar := runif( nrow(dapply) ) ]
 setorder( dfinal, -prob_SI, azar )
 
 
-dir.create( "./exp/" )
-dir.create( "./exp/KA4120" )
+dir.create( "C:\\DataMining_Economia_Finanzas\\exp\\" )
+dir.create( "C:\\DataMining_Economia_Finanzas\\exp\\exp\\KA4120" )
 
 
 for( corte  in  c( 7500, 8000, 8500, 9000, 9500, 10000, 10500, 11000 ) )
@@ -93,6 +95,6 @@ for( corte  in  c( 7500, 8000, 8500, 9000, 9500, 10000, 10500, 11000 ) )
 
 
   fwrite( dfinal[ , list(numero_de_cliente, Predicted) ], #solo los campos para Kaggle
-           file= paste0( "./exp/KA4120/KA4120_005_",  corte, ".csv"),
+           file= paste0( "C:\\DataMining_Economia_Finanzas\\exp\\KA4120\\KA4120_005_",  corte, ".csv"),
            sep=  "," )
 }
