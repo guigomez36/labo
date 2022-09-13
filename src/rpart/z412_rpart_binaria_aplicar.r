@@ -27,10 +27,10 @@ dapply  <- dataset[ foto_mes==202103 ]  #defino donde voy a aplicar el modelo
 # obviamente rpart no puede ve  clase_ternaria para predecir  clase_binaria
 #  #no utilizo Visa_mpagado ni  mcomisiones_mantenimiento por drifting
 
-modelo  <- rpart(formula=   "clase_binaria ~ . -clase_ternaria",
+modelo  <- rpart(formula=   "clase_binaria ~ . -clase_ternaria -mcomisiones_mantenimiento -numero_de_cliente -cliente_antiguedad -cpayroll2_trx -mcomisiones_otras -mforex_sell -matm -mpasivos_margen -cforex -cextraccion_autoservicio -mextraccion_autoservicio -catm_trx_other -ccheques_depositados_rechazados -cprestamos_prendarios -mforex_buy -mttarjeta_master_debitos_automaticos -Visa_mfinanciacion_limite -minversion2 -mcheques_depositados_rechazados -minversion1_pesos -ctarjeta_master_transacciones -Visa_msaldodolares -cinversion2 -minversion1_dolares -Visa_mpagosdolares -Visa_mlimitecompra -ccuenta_corriente -mpagomiscuentas -ccheques_emitidos -mcheques_emitidos -ccheques_depositados -cforex_sell -mtarjeta_master_consumo -mcheques_depositados -matm_other -mcaja_ahorro_adicional -Visa_mpagado -ccajas_extracciones -Master_status -Visa_fultimo_cierre -cliente_edad -mtransferencias_emitidas -ctransferencias_emitidas -catm_trx -ctransferencias_recibidas -ccaja_ahorro -Visa_cconsumos -mcaja_ahorro_dolares -Master_mlimitecompra -Master_mfinanciacion_limite -ccajas_consultas -Visa_mconsumototal -ccaja_seguridad -ctarjeta_visa_debitos_automaticos -Visa_mconsumospesos -mautoservicio -ctarjeta_debito_transacciones -mttarjeta_visa_debitos_automaticos -tcallcenter -ccallcenter_transacciones -chomebanking_transacciones -Visa_mpagospesos",
                  data=      dtrain,  #los datos donde voy a entrenar
                  xval=         0,
-                 cp=          -0.54,#  -0.89
+                 cp=          -1,#  -0.89
                  minsplit=  1073,   # 621
                  minbucket=  278,   # 309
                  maxdepth=     9 )  #  12
