@@ -159,9 +159,14 @@ dataset  <- dataset[ foto_mes==202103 ]
 
 #creo la carpeta donde va el experimento
 # HT  representa  Hiperparameter Tuning
-dir.create( "C:\\DataMining_Economia_Finanzas\\exp\\",  showWarnings = FALSE ) 
-dir.create( "C:\\DataMining_Economia_Finanzas\\exp\\RandomForest0\\", showWarnings = FALSE )
-setwd("C:\\DataMining_Economia_Finanzas\\exp\\RandomForest0\\")   #Establezco el Working Directory DEL EXPERIMENTO
+#dir.create( "C:\\DataMining_Economia_Finanzas\\exp\\",  showWarnings = FALSE ) 
+dir.create( "./exp/",  showWarnings = FALSE ) 
+
+#dir.create( "C:\\DataMining_Economia_Finanzas\\exp\\RandomForest0\\", showWarnings = FALSE )
+dir.create( "./exp/RandomForest0/", showWarnings = FALSE )
+
+#setwd("C:\\DataMining_Economia_Finanzas\\exp\\RandomForest0\\")   #Establezco el Working Directory DEL EXPERIMENTO
+setwd("./exp/RandomForest0/")   #Establezco el Working Directory DEL EXPERIMENTO
 
 #en estos archivos quedan los resultados
 kbayesiana  <- "HT6330.RDATA"
