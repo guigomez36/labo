@@ -21,12 +21,12 @@ require("treeClust")
 require("ggplot2")
 
 # Poner la carpeta de la materia de SU computadora local
-setwd("/home/aleb/dmeyf2022")
+setwd("C:\\DataMining_Economia_Finanzas\\datasets")
 # Poner sus semillas
 semillas <- c(17, 19, 23, 29, 31)
 
 # Cargamos el dataset
-dataset <- fread("./datasets/competencia1_2022.csv")
+dataset <- fread("C:\\DataMining_Economia_Finanzas\\datasets\\competencia1_2022.csv")
 
 # Nos quedamos solo con el 202101
 dataset <- dataset[foto_mes == 202101]

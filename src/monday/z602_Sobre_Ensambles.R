@@ -47,12 +47,12 @@ require("randomForest")
 require("lightgbm")
 
 # Poner la carpeta de la materia de SU computadora local
-setwd("/home/aleb/dmeyf2022")
+setwd("C:\\DataMining_Economia_Finanzas\\datasets\\")
 # Poner sus semillas
 semillas <- c(17, 19, 23, 29, 31)
 
 # Cargamos los datasets y nos quedamos solo con 202101 y 202103
-dataset <- fread("./datasets/competencia2_2022.csv.gz")
+dataset <- fread("C:\\DataMining_Economia_Finanzas\\datasets\\competencia2_2022.csv.gz")
 enero <- dataset[foto_mes == 202101]
 marzo <- dataset[foto_mes == 202103]
 
@@ -196,7 +196,7 @@ which(importancia3$variable == "pollito")
 ## ---------------------------
 
 # Cargamos todo para tener un código limpio
-dataset <- fread("./datasets/competencia2_2022.csv.gz")
+dataset <- fread("C:\\DataMining_Economia_Finanzas\\datasets\\competencia2_2022.csv.gz")
 enero <- dataset[foto_mes == 202101]
 marzo <- dataset[foto_mes == 202103]
 rm(dataset)
