@@ -28,7 +28,7 @@ PARAM$finalmodel$num_iterations    <-    328  #615
 PARAM$finalmodel$num_leaves        <-   1015  #784
 PARAM$finalmodel$min_data_in_leaf  <-   5542  #5628
 PARAM$finalmodel$feature_fraction  <-      0.7832319551  #0.8382482539
-PARAM$finalmodel$semilla           <- 102191
+PARAM$finalmodel$semilla           <- 100069
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
@@ -38,6 +38,15 @@ setwd( "~/buckets/b1" )
 #cargo el dataset donde voy a entrenar
 dataset  <- fread(PARAM$input$dataset, stringsAsFactors= TRUE)
 
+
+# quito las columnas que tienen alta correlacion con otras o muchos nulos del dataset
+#==================================================================================================================
+xx1 <- c("mcomisiones_mantenimiento","Visa_mpagado", "ctarjeta_visa_transacciones","ctarjeta_visa_debitos_automaticos","mttarjeta_visa_debitos_automaticos","mtarjeta_visa_consumo","Master_Finiciomora","mtarjeta_master_consumo","Visa_msaldototal","Visa_msaldopesos","Master_mpagospesos","Master_mconsumospesos","ctarjeta_visa_transacciones","ctarjeta_visa_transacciones","ctarjeta_master_transacciones","Master_msaldopesos","Master_msaldopesos","cextraccion_autoservicio","Visa_msaldopesos","ccajas_transacciones","mtarjeta_master_consumo","ctarjeta_master","mtarjeta_master_consumo","Visa_msaldototal","Master_msaldototal","Master_msaldototal","mpayroll2","Visa_msaldopesos","Visa_msaldopesos","Visa_mconsumospesos","Visa_mconsumototal","mtarjeta_visa_consumo","ctarjeta_visa_transacciones","mtarjeta_master_consumo","mtarjeta_visa_consumo","tcallcenter","cprestamos_hipotecarios","mcaja_ahorro_dolares","Visa_msaldototal","Visa_msaldototal","Master_msaldopesos","ctarjeta_visa_transacciones","Visa_mpagospesos","mpasivos_margen","Visa_madelantopesos","ctarjeta_master_debitos_automaticos","mtarjeta_visa_consumo","Visa_mconsumospesos","Visa_mpagospesos","cextraccion_autoservicio","ctarjeta_debito_transacciones","mrentabilidad","cextraccion_autoservicio","ccomisiones_mantenimiento","ctarjeta_visa_debitos_automaticos","Master_msaldototal","mextraccion_autoservicio","mtarjeta_visa_consumo","catm_trx","cforex","cliente_antiguedad","cforex","ctarjeta_master_transacciones","catm_trx_other","Master_fechaalta","ctarjeta_visa_transacciones","mextraccion_autoservicio","Master_msaldodolares","mtarjeta_master_consumo","mtarjeta_master_consumo","cliente_antiguedad","mtarjeta_visa_consumo","mtarjeta_visa_consumo","Visa_msaldodolares","Master_madelantopesos","cforex_sell","Master_msaldototal","Master_mlimitecompra","Visa_msaldototal","mcomisiones","Visa_mconsumospesos","Master_mconsumospesos") # vector of columns you DON'T want
+#xx2 <- c("Visa_mpagado","ctarjeta_visa_debitos_automaticos","Visa_cconsumos","Visa_cconsumos","mttarjeta_visa_debitos_automaticos","Visa_Finiciomora","Master_cconsumos","Visa_mpagospesos","Visa_mpagospesos","Master_mconsumototal","Master_mpagospesos","Visa_mconsumospesos","Visa_mconsumototal","mtarjeta_master_consumo","Master_mconsumototal","Master_mconsumospesos","matm","Visa_mpagominimo","ccajas_extracciones","Master_mpagospesos","Master_status","Master_msaldopesos","Visa_mpagominimo","Master_mconsumototal","Master_mconsumospesos","cpayroll2_trx","Visa_mconsumototal","Visa_mconsumospesos","Visa_cconsumos","Visa_cconsumos","Visa_msaldopesos","Visa_mpagospesos","Master_msaldototal","Visa_msaldototal","ccallcenter_transacciones","mprestamos_hipotecarios","mcuentas_saldo","Visa_mconsumototal","Visa_mconsumospesos","Master_mpagominimo","mtarjeta_visa_consumo","Visa_cconsumos","mcaja_ahorro","Visa_cadelantosefectivo","mttarjeta_master_debitos_automaticos","Visa_cconsumos","Visa_mpagospesos","Visa_mconsumototal","mextraccion_autoservicio","mautoservicio","mrentabilidad_annual","catm_trx","mcomisiones_mantenimiento","mttarjeta_visa_debitos_automaticos","Master_mpagominimo","catm_trx","Visa_mpagospesos","matm","mforex_sell","Master_fechaalta","cforex_sell","Master_cconsumos","matm_other","Visa_fechaalta","Visa_cconsumos","matm","Master_mconsumosdolares","Master_mconsumototal","Master_mconsumospesos","Visa_fechaalta","Visa_mconsumototal","Visa_mconsumospesos","Visa_mconsumosdolares","Master_cadelantosefectivo","mforex_sell","Master_msaldopesos","Visa_mlimitecompra","Visa_msaldopesos","mcomisiones_otras","Visa_mconsumototal","Master_mconsumototal")
+
+# subset
+dataset <- dataset[, !xx1, with = FALSE]
+#==================================================================================================================
 
 #--------------------------------------
 
