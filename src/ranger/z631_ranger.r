@@ -42,10 +42,10 @@ dapply  <- dataset[ foto_mes == 202105 ]
 
 #genero el modelo de Random Forest con la libreria ranger
 #notar como la suma de muchos arboles contrarresta el efecto de min.node.size=1
-param  <- list( "num.trees"=       300,  #cantidad de arboles
-                "mtry"=             30,  #cantidad de variables que evalua para hacer un split  sqrt(ncol(dtrain))
-                "min.node.size"=  1500,  #tamaño minimo de las hojas
-                "max.depth"=        12   # 0 significa profundidad infinita
+param  <- list( "num.trees"=       2496,  #cantidad de arboles 300
+                "mtry"=             6,  #cantidad de variables que evalua para hacer un split  sqrt(ncol(dtrain)) 30
+                "min.node.size"=  280,  #tamaño minimo de las hojas 1500
+                "max.depth"=        17   # 0 significa profundidad infinita 12
               )
 
 set.seed(100069) #Establezco la semilla aleatoria
