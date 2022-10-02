@@ -36,15 +36,15 @@ hs <- makeParamSet(
          makeNumericParam("feature_fraction", lower=    0.2  , upper=    1.0),
          makeIntegerParam("min_data_in_leaf", lower=    0L   , upper=  8000L),
          makeIntegerParam("num_leaves",       lower=   16L   , upper=  1024L),
-         makeIntegerParam("envios",           lower= 5000L   , upper= 15000L),
-         makeIntegerParam("max_bin",          lower= 5L      , upper= 70L)
+         makeIntegerParam("envios",           lower= 5000L   , upper= 15000L)
+        # makeIntegerParam("max_bin",          lower= 5L      , upper= 70L)
         )
 
 #defino los parametros de la corrida, en una lista, la variable global  PARAM
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM  <- list()
 
-PARAM$experimento  <- "HT7231_lgbm_2"
+PARAM$experimento  <- "HT7231_lgbm_5"
 
 PARAM$input$dataset       <- "./datasets/competencia2_2022.csv.gz"
 PARAM$input$training      <- c( 202103 )
@@ -224,6 +224,18 @@ dataset[ , mv_status06       := ifelse( is.na(Visa_status),
 dataset[ , mv_status07       := ifelse( is.na(Master_status), 
                                         ifelse( is.na(Visa_status), 10, Visa_status), 
                                         Master_status)  ]
+
+
+
+#=====================================
+#balance = mcuentas_saldo - mautoservicio - mtarjeta_visa_consumo - mtarjeta_master_consumo - mprestamos_personales - mprestamos_prendarios - mprestamos_hipotecarios
+#balance = mcuentas_saldo - mautoservicio - mtarjeta_visa_consumo , mtarjeta_master_consumo , mprestamos_personales , mprestamos_prendarios , mprestamos_hipotecarios
+dataset[ , mv_deuda          := rowSums( cbind( mautoservicio , mtarjeta_visa_consumo , mtarjeta_master_consumo , mprestamos_personales , mprestamos_prendarios , mprestamos_hipotecarios) , na.rm=TRUE ) ]
+dataset[ , mv_balance        := rowSums( cbind( mcuentas_saldo , (-1)*mv_deuda) , na.rm=TRUE ) ]
+dataset[ , mvrango_etario       := ifelse( (cliente_edad<=30),1, ifelse( (cliente_edad<50), 2,3)) ]
+#=====================================
+
+
 
 
 #combino MasterCard y Visa
