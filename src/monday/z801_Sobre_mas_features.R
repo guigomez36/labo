@@ -19,12 +19,12 @@ require("lightgbm")
 require("xgboost")
 
 # Poner la carpeta de la materia de SU computadora local
-setwd("/home/aleb/dmeyf2022")
+setwd("C:\\DataMining_Economia_Finanzas\\")
 # Poner sus semillas
 semillas <- c(17, 19, 23, 29, 31)
 
 # Cargamos los datasets y nos quedamos solo con 202101 y 202103
-dataset <- fread("./datasets/competencia2_2022.csv.gz")
+dataset <- fread("C:\\DataMining_Economia_Finanzas\\datasets\\competencia2_2022.csv.gz")
 marzo <- dataset[foto_mes == 202103]
 mayo <- dataset[foto_mes == 202105]
 rm(dataset)
@@ -65,6 +65,8 @@ colnames(new_features)[150:173]
 ## Step 4: Entendiendo como se construyen.
 ## ---------------------------
 
+#install.packages('DiagrammeR', dependencies=TRUE)
+library('DiagrammeR')
 xgb.plot.tree(colnames(new_features), xgb_model, trees = 0)
 
 

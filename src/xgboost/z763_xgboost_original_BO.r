@@ -8,6 +8,13 @@
 # 5-fold cross validation
 # la probabilidad de corte es un hiperparametro
 
+
+
+
+
+
+
+
 #limpio la memoria
 rm( list=ls() )  #remove all objects
 gc()             #garbage collection
