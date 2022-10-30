@@ -15,9 +15,9 @@ require("data.table")
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento <- "TS9322" 
+PARAM$experimento <- "TS9323" 
 
-PARAM$exp_input  <- "FE9251" # tomo el dataset con encoder64 + 64 columnas de Fe
+PARAM$exp_input  <- "FE9250" # tomo el dataset con encoder64 + 64 columnas de Fe
 
 PARAM$future       <- c( 202107 )
 
