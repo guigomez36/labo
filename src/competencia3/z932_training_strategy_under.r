@@ -15,20 +15,20 @@ require("data.table")
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento <- "TS9323" 
+PARAM$experimento <- "TS9324" 
 
-PARAM$exp_input  <- "FE9250" # tomo el dataset con encoder64 + 64 columnas de Fe
+PARAM$exp_input  <- "FE9250" # 
 
 PARAM$future       <- c( 202107 )
 
-PARAM$final_train  <- c( 202103, 202104, 202105 )
+PARAM$final_train  <- c( 202103, 202104, 202105 ,201905, 201906, 201907 )
 
 PARAM$train$training     <- c( 202101,202102, 202103,201905, 201906, 201907 )
 PARAM$train$validation   <- c( 202104 )
 PARAM$train$testing      <- c( 202105 )
 
 PARAM$train$sampling_total  <- 1.0  # 1.0 significa que NO se hace sampling total,  0.3 es quedarse con el 30% de TODOS los registros
-PARAM$train$undersampling_mayoritaria  <- 0.1   # 1.0 significa NO undersampling ,  0.1  es quedarse con el 10% de los CONTINUA
+PARAM$train$undersampling_mayoritaria  <- 0.3   # 1.0 significa NO undersampling ,  0.1  es quedarse con el 10% de los CONTINUA
 
 #Atencion, las semillas deben ser distintas
 PARAM$train$semilla_sampling  <- 100069
