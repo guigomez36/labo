@@ -21,9 +21,9 @@ require("mlrMBO")
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento <- "HT9423"
+PARAM$experimento <- "HT9424"
 
-PARAM$exp_input  <- "TS9323"
+PARAM$exp_input  <- "TS9324"
 # FIN Parametros del script
 
 
@@ -35,7 +35,7 @@ options(error = function() {
 })
 #------------------------------------------------------------------------------
 
-ksemilla  <- 102191
+ksemilla  <- 100069
 
 kcrossvalidation_folds  <- 5  #En caso que se haga cross validation, se usa esta cantidad de folds
 
