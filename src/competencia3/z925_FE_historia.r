@@ -23,7 +23,7 @@ PARAM$experimento <- "FE9253"
 
 PARAM$exp_input  <- "DR9143"
 
-PARAM$lag1  <- TRUE
+PARAM$lag1  <- FALSE
 PARAM$lag2  <- FALSE
 PARAM$Tendencias  <- TRUE
 PARAM$RandomForest  <- TRUE          #No se puede poner en TRUE para la entrega oficial de la Tercera Competencia
